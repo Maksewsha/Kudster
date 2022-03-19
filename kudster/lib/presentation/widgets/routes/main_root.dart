@@ -6,9 +6,10 @@ import 'package:kudster/data/models/event_full_model/event_full_model.dart';
 import 'package:kudster/data/repos/network_repo.dart';
 import 'package:kudster/presentation/res/strings.dart';
 import 'package:kudster/presentation/widgets/elements/MyAppBar.dart';
+import 'package:kudster/presentation/widgets/elements/cards/event_card.dart';
 import 'package:kudster/presentation/widgets/elements/nav_drawer.dart';
 
-class MainRoot extends StatelessWidget{
+class MainRoot extends StatelessWidget {
 
   const MainRoot({Key? key}) : super(key: key);
 
@@ -18,18 +19,18 @@ class MainRoot extends StatelessWidget{
       appBar: MyAppBar(),
       body: EventsList(),
       bottomNavigationBar: NavDrawer(),
-      );
+    );
   }
 }
 
-class EventsList extends StatefulWidget{
+class EventsList extends StatefulWidget {
   EventsList({Key? key}) : super(key: key);
 
   @override
   State<EventsList> createState() => _EventsListState();
 }
 
-class _EventsListState extends State<EventsList>{
+class _EventsListState extends State<EventsList> {
 
   List<EventFullInfoModel> eventsList = [];
 
@@ -51,15 +52,11 @@ class _EventsListState extends State<EventsList>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
       body: Container(
         child: ListView.builder(
-          itemCount: eventsList.length,
+            itemCount: eventsList.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(eventsList[index].title ?? "@"),
-                subtitle: Text(eventsList[index].id.toString() ?? "2"),
-              );
+              return EventCard(event: eventsList.first);
             }
         ),
       ),

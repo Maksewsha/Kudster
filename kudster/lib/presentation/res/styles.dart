@@ -15,7 +15,7 @@ class Styles{
     letterSpacing: 0,
   );
 
-  static final title = headline.copyWith(fontSize: 18);
+  static final title = headline.copyWith(fontSize: 24);
 
 
 }
